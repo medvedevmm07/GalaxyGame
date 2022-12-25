@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LooseScene.unity
     guid: cff723b301a86064db8b14b925c93b23
+  - enabled: 1
+    path: Assets/Scenes/MapScene.unity
+    guid: 5a50eada975bbc248ad87a46d2520e96
   m_configObjects: {}
