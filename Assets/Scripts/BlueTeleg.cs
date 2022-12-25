@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlueTeleg : MonoBehaviour
 {
-    public int health = 210;
+    public int health = 60;
     public GameObject bulletOriginal;
 
     private SpriteRenderer spriteRenderer;
@@ -16,11 +16,6 @@ public class BlueTeleg : MonoBehaviour
         halfWidth = spriteRenderer.bounds.size.x / 2;
     }
 
-    
-    void Update()
-    {
-        
-    }
     void OnTriggerEnter2D(Collider2D collider)
     {
         GameObject othObject = collider.gameObject;
@@ -34,10 +29,9 @@ public class BlueTeleg : MonoBehaviour
         }
     }
 
-    public void Shoot()
-    {
+    public void Shoot() {
         GameObject clone = Instantiate(bulletOriginal);
         clone.transform.position = transform.position;
-        print("Булет нах");
+        print("Привет");
     }
 }

@@ -18,11 +18,11 @@ public class LevelMan : MonoBehaviour
     
     void Update()
     {
-        if(currentGroup.isAlive == false)
+        if(currentGroup != null && currentGroup.isAlive == false)
         {
             Destroy(currentGroup.gameObject);
             if(groupsCount == 3) {
-                SceneManager.LoadSceneAsync(1);
+                SceneManager.LoadSceneAsync(SceneIDS.winSceneID);
             } else {
                 CreateNewGroup(); 
                 groupsCount++;

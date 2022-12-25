@@ -12,7 +12,7 @@ public class FirstEnGroup : GroupBase
     public BlueTeleg ship5;
 
     private int direction = -1;
-    private float speed = 0.3f;
+    private float speed = 0.1f;
     private List<BlueTeleg> ships = new List<BlueTeleg>(); 
     private System.Random generator = new System.Random();
 
@@ -23,7 +23,8 @@ public class FirstEnGroup : GroupBase
         ships.Add(ship3);
         ships.Add(ship4);
         ships.Add(ship5);
-        InvokeRepeating("GameShoot", 0.0f, 1.0f);
+
+        InvokeRepeating("GroupShoot", 0.0f, 1.0f);
     }
 
     
@@ -37,7 +38,7 @@ public class FirstEnGroup : GroupBase
         && ship4 == null 
         && ship5 == null) {
             isAlive = false;
-            CancelInvoke("GameShoot");
+            CancelInvoke("GroupShoot");
         }
 
         if(direction == -1) {
@@ -89,9 +90,8 @@ public class FirstEnGroup : GroupBase
         return maxX;
     }
 
-    void GameShoot()
-    {
-        int randomIndex = generator.Next(0, ships.Count-1);
+    void GroupShoot() {
+        int randomIndex = generator.Next(0,ships.Count-1);
         ships[randomIndex].Shoot();
     }
 }

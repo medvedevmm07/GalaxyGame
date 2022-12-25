@@ -6,8 +6,9 @@ public class Shipamogus : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public GameObject bullet;
+    public int health = 50;
 
-    float speed = 0.4f;
+    private float speed = 0.1f;
 
     private float halfWidth;
 
@@ -23,14 +24,14 @@ public class Shipamogus : MonoBehaviour
         Vector3 checkLPos = new Vector3(newLPos.x - halfWidth, newLPos.y, 0);
         Vector3 checkRPos = new Vector3(newRPos.x + halfWidth, newRPos.y, 0);
 
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.RightArrow)) {
             bool check = ScreenHelpers.ObjectNah(checkRPos);
             if (check) {
                 transform.position = newRPos; 
             }            
         }
 
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.LeftArrow)) {
             bool check = ScreenHelpers.ObjectNah(checkLPos);
             if (check) {
                 transform.position = newLPos; 
@@ -40,6 +41,18 @@ public class Shipamogus : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) {
             GameObject clone = Instantiate(bullet);
             clone.transform.position = transform.position;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D otherCollider) {
+        GameObject otherObject = otherCollider.gameObject;
+        EnemyBullet bulletScript = otherObject.GetComponent<EnemyBullet>();
+        if(bulletScript != null) {
+            health -= bulletScript.damage;
+            Destroy(otherObject);
+            if(health <= 0) {
+                Destroy(gameObject);
+            }
         }
     }
 }
