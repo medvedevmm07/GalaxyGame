@@ -32,6 +32,5 @@ public class BlueTeleg : MonoBehaviour
     public void Shoot() {
         GameObject clone = Instantiate(bulletOriginal);
         clone.transform.position = transform.position;
-        print("Привет");
     }
 }
